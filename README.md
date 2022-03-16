@@ -1,5 +1,31 @@
 # CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier
 This repository presents the design of 8bit Wallace Tree Multiplier using Synopsys Custom Compiler on 28nm CMOS Technology.
+# Table of Content
+- [Abstract](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#abstract)
+- [INTRODUCTION](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#introduction)
+- [Tools Used](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#tools-used)
+- [CMOS NOT Gate](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#cmos-not-gate)
+- [CMOS AND Gate](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#cmos-and-gate)
+- [CMOS OR Gate](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#cmos-or-gate)
+- [CMOS EX-OR Gate](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#cmos-ex-or-gate)
+- [Half Adder Module](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#half-adder-module)
+- [Full Adder Module](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#full-adder-module)
+- [8x1 Multiplier](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#8x1-multiplier)
+- [Design Approach](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#design-approach)
+- [Layer 1-Group 1 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-1-group-1-reduction)
+- [Layer 1-Group 2 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-1-group-2-reduction)
+- [Layer 1-Group 3 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-1-group-3-reduction)
+- [Layer 2 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-2-reduction)
+- [Layer 3 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-3-reduction)
+- [Layer 4 Reduction](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-4-reduction)
+- [Layer 5 Reduction or Wallace Tree Schematic](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#layer-5-reduction-or-wallace-tree-schematic)
+- [Wallace Tree Symbol](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#wallace-tree-symbol)
+- [DC Analysis Testbench](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#dc-analysis-testbench)
+- [Simulation Result](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#simulation-result)
+- [Netlist](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#netlist)
+- [Author](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#author)
+- [Acknowledgement](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#acknowledgement)
+- [References](https://github.com/Shivani327/CMOS-Implementation-of-8bit-Wallace-Tree-Multiplier/blob/main/README.md#references)
 # Abstract
 A Wallace multiplier is a hardware implementation of a binary multiplier, a digital circuit that multiplies two integers. It uses a selection of full and half adders (the Wallace tree or Wallace reduction) to sum partial products in stages until two numbers are left. Wallace multipliers reduce as much as possible on each layer.Wallace multipliers were devised by the Australian computer scientist Chris Wallace in 1964.
 
