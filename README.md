@@ -3,7 +3,7 @@ This repository presents the design of 8bit Wallace Tree Multiplier using Synops
 # Abstract
 A Wallace multiplier is a hardware implementation of a binary multiplier, a digital circuit that multiplies two integers. It uses a selection of full and half adders (the Wallace tree or Wallace reduction) to sum partial products in stages until two numbers are left. Wallace multipliers reduce as much as possible on each layer.Wallace multipliers were devised by the Australian computer scientist Chris Wallace in 1964.
 
-The Wallace tree has three steps:
+*The Wallace tree has three steps:*
 
 1. Multiply each bit of one of the arguments, by each bit of the other.
 2. Reduce the number of partial products to two by layers of full and half adders.
@@ -24,3 +24,7 @@ The Wallace tree is a variant of long multiplication.
 
 ![2022-03-16 (2)](https://user-images.githubusercontent.com/100506927/158533648-e9faa4b5-4701-4db8-837c-65e05a75b8b8.png)
 
+# Tools Used
+- **Synopsys Custom Compiler**:  The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
+- **Synopsys Primewave**:  PrimeWave™ Design Environment is a comprehensive and flexible environment for simulation setup and analysis of analog, RF, mixed-signal design, custom-digital and memory designs within the Synopsys Custom Design Platform. This tool helped in various types of simulations of the above designed circuit.
+- **Synopsys 28nm PDK**:  The Synopsys 28nm Process Design Kit(PDK) was used in creation and simulation of the above designed circuit.
