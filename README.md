@@ -67,6 +67,7 @@ In this reduction layer, we multiply 3bits by 8bits.
 ![2022-03-01 (61)](https://user-images.githubusercontent.com/100506927/158571750-52090a49-7ac3-4f21-acbf-db5da27fb98c.png)
 ![2022-03-01 (62)](https://user-images.githubusercontent.com/100506927/158574768-07c4c968-5e95-4aab-a0d5-04100709a1e3.png)
 # Netlist
+Refer to the netlist of the circuits here: [Netlist]()
 # Author
 Shivani, BTech Electronics and Communication Engineering, J.C. Bose University of Science and Technology, YMCA, Faridabad, Haryana.
 # Acknowledgement
