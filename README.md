@@ -29,8 +29,6 @@ The Wallace tree is a variant of long multiplication.
 - **Synopsys Primewave**:  PrimeWave™ Design Environment is a comprehensive and flexible environment for simulation setup and analysis of analog, RF, mixed-signal design, custom-digital and memory designs within the Synopsys Custom Design Platform. This tool helped in various types of simulations of the above designed circuit.
 - **Synopsys 28nm PDK**:  The Synopsys 28nm Process Design Kit(PDK) was used in creation and simulation of the above designed circuit.
 
-# **Following are the circuits which are used in reduction of *WALLACE TREE*:**
-
 # CMOS NOT Gate
 ![2022-03-01 (38)](https://user-images.githubusercontent.com/100506927/158534736-26f12122-c3ce-4bb7-b6fe-9bf26230602f.png)
 # CMOS AND Gate
@@ -45,3 +43,24 @@ The Wallace tree is a variant of long multiplication.
 ![2022-03-01 (45)](https://user-images.githubusercontent.com/100506927/158535605-dbe8be72-7ea0-4b85-a5e2-506e374abead.png)
 # 8x1 Multiplier
 ![2022-03-01 (30)](https://user-images.githubusercontent.com/100506927/158535966-8ca677e1-4322-4bd1-b200-a7478175b057.png)
+# Layer 1-Group 1
+In this reduction layer, we multiply 3bits by 8bits.
+- In doing so, we require 3 8x1 multiplier, 6 Full Adder,and 2 Half Adder:
+![2022-03-01 (49)](https://user-images.githubusercontent.com/100506927/158537554-3316ae71-f654-42f6-87e2-01a2ffc9e163.png)
+# Layer 1-Group 2
+![2022-03-01 (49)](https://user-images.githubusercontent.com/100506927/158537939-3b51d4bd-7a1c-47f9-8dd1-3c9aa5ddb09b.png)
+# Layer 1-Group 3
+![2022-03-01 (51)](https://user-images.githubusercontent.com/100506927/158537739-9b58c3eb-22df-4d90-b612-2b9c10ee1a78.png)
+# Layer 2
+![2022-03-01 (53)](https://user-images.githubusercontent.com/100506927/158538217-7dc7d5a8-b749-4739-ba67-8d977e496579.png)
+# Layer 3
+![2022-03-01 (55)](https://user-images.githubusercontent.com/100506927/158538291-286a93a9-e5ee-48b2-bfb1-4fe1e670199d.png)
+# Layer 4
+![2022-03-01 (57)](https://user-images.githubusercontent.com/100506927/158538417-4cbc697c-6659-43fe-9421-99f92ca3d8a6.png)
+# Layer 5
+![2022-03-01 (34)](https://user-images.githubusercontent.com/100506927/158538507-6c1f0dad-de9e-40bb-8ae0-82dd9559f493.png)
+# Wallace Tree Symbol
+![2022-03-01 (35)](https://user-images.githubusercontent.com/100506927/158539244-d3d30425-b084-496c-90bb-98867794379b.png)
+# DC Analysis Testbench
+![2022-03-01 (59)](https://user-images.githubusercontent.com/100506927/158539547-f88082e5-9fec-4a4d-8403-f12cc91fb6c9.png)
+#
