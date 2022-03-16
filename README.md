@@ -43,24 +43,41 @@ The Wallace tree is a variant of long multiplication.
 ![2022-03-01 (45)](https://user-images.githubusercontent.com/100506927/158535605-dbe8be72-7ea0-4b85-a5e2-506e374abead.png)
 # 8x1 Multiplier
 ![2022-03-01 (30)](https://user-images.githubusercontent.com/100506927/158535966-8ca677e1-4322-4bd1-b200-a7478175b057.png)
-# Layer 1-Group 1
+# Layer 1-Group 1 Reduction
 In this reduction layer, we multiply 3bits by 8bits.
 - In doing so, we require 3 8x1 multiplier, 6 Full Adder,and 2 Half Adder:
 ![2022-03-01 (49)](https://user-images.githubusercontent.com/100506927/158537554-3316ae71-f654-42f6-87e2-01a2ffc9e163.png)
-# Layer 1-Group 2
+# Layer 1-Group 2 Reduction
 ![2022-03-01 (49)](https://user-images.githubusercontent.com/100506927/158537939-3b51d4bd-7a1c-47f9-8dd1-3c9aa5ddb09b.png)
-# Layer 1-Group 3
+# Layer 1-Group 3 Reduction
 ![2022-03-01 (51)](https://user-images.githubusercontent.com/100506927/158537739-9b58c3eb-22df-4d90-b612-2b9c10ee1a78.png)
-# Layer 2
+# Layer 2 Reduction
 ![2022-03-01 (53)](https://user-images.githubusercontent.com/100506927/158538217-7dc7d5a8-b749-4739-ba67-8d977e496579.png)
-# Layer 3
+# Layer 3 Reduction
 ![2022-03-01 (55)](https://user-images.githubusercontent.com/100506927/158538291-286a93a9-e5ee-48b2-bfb1-4fe1e670199d.png)
-# Layer 4
+# Layer 4 Reduction
 ![2022-03-01 (57)](https://user-images.githubusercontent.com/100506927/158538417-4cbc697c-6659-43fe-9421-99f92ca3d8a6.png)
-# Layer 5
+# Layer 5 Reduction or Wallace tree schematic
 ![2022-03-01 (34)](https://user-images.githubusercontent.com/100506927/158538507-6c1f0dad-de9e-40bb-8ae0-82dd9559f493.png)
 # Wallace Tree Symbol
 ![2022-03-01 (35)](https://user-images.githubusercontent.com/100506927/158539244-d3d30425-b084-496c-90bb-98867794379b.png)
 # DC Analysis Testbench
 ![2022-03-01 (59)](https://user-images.githubusercontent.com/100506927/158539547-f88082e5-9fec-4a4d-8403-f12cc91fb6c9.png)
-#
+# Simulation Result
+![2022-03-01 (61)](https://user-images.githubusercontent.com/100506927/158571750-52090a49-7ac3-4f21-acbf-db5da27fb98c.png)
+![2022-03-01 (62)](https://user-images.githubusercontent.com/100506927/158574768-07c4c968-5e95-4aab-a0d5-04100709a1e3.png)
+# Netlist
+# Author
+Shivani, BTech Electronics and Communication Engineering, J.C. Bose University of Science and Technology, YMCA, Faridabad, Haryana.
+# Acknowledgement
+- [Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd.](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/)
+- [Cloud Based Analog IC Design Hackathon](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/')
+- [Synopsys India](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/')
+- [Sameer Durgoji, NIT Karnataka](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/')
+- [Chinmay panda, IIT Hyderabad](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/')
+# References
+- [1] C.S. Wallace, A suggestion for a fast multiplier, IEEE Trans. Computers, Vol. 13, pp. 14-17, Feb. 1964.
+- [2] [Wikipedia](https://en.wikipedia.org/wiki/Wallace_tree)
+- [3] K. Prasad and K.K. Parhi, Low-power 4-2 and 5-2 compressors, Proc. of 2001 Asilomar Conf. on Signals, Systems and Computers, Pacific Grove, CA, USA.
+- [4] Neil H. Weste and Kamran Eshraghian, Principles of CMOS VLSI design-A Systems Perspective, Pearson Edition Pvt Ltd. 3rd edition.
+- [5] N. Sureka ; R. Porselvi ; K. Kumuthapriya, “An Efficient High Speed Wallace Tree Multiplier”, 2013 International Conference on Information Communication and Embedded Systems (ICICES). Technologies.
