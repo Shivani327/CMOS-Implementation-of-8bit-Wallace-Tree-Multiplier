@@ -1,0 +1,340 @@
+*  Generated for: PrimeSim
+*  Design library name: Wallace_tree
+*  Design cell name: dc_analysis_tb
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+
+*Custom Compiler Version S-2021.09
+*Tue Mar  1 16:47:48 2022
+
+.global gnd!
+****************************
+* Library          : Wallace_tree
+* Cell             : NOT_Gate
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt not_gate vdd gnd_1 ip op
+xm0 op ip vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm1 op ip gnd_1 gnd_1 n105 w=0.1u l=0.03u nf=1 m=1
+.ends not_gate
+
+****************************
+* Library          : Wallace_tree
+* Cell             : AND_Gate
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt and_gate a b vdd gnd_1 op
+xm6 net23 a net45 gnd_1 n105 w=0.1u l=0.03u nf=1 m=1
+xm7 net45 b gnd_1 gnd_1 n105 w=0.1u l=0.03u nf=1 m=1
+xm4 net23 a vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm5 net23 b vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xi9 vdd gnd_1 net23 op not_gate
+.ends and_gate
+
+****************************
+* Library          : Wallace_tree
+* Cell             : 8*1_multiplier
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt _8*1_multiplier vdd a0 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 y0 y1 y2 y3 y4 y5
++ y6 y7
+xi8 a0 b4 vdd gnd_1 y4 and_gate
+xi7 a0 b5 vdd gnd_1 y5 and_gate
+xi6 a0 b6 vdd gnd_1 y6 and_gate
+xi4 a0 b7 vdd gnd_1 y7 and_gate
+xi3 a0 b3 vdd gnd_1 y3 and_gate
+xi2 a0 b2 vdd gnd_1 y2 and_gate
+xi1 a0 b1 vdd gnd_1 y1 and_gate
+xi0 a0 b0 vdd gnd_1 y0 and_gate
+.ends _8*1_multiplier
+
+****************************
+* Library          : Wallace_tree
+* Cell             : OR_Gate
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt or_gate a b vdd gnd_1 op
+xi6 net40 net41 vdd gnd_1 net42 and_gate
+xi7 vdd gnd_1 net42 op not_gate
+xi4 vdd gnd_1 a net40 not_gate
+xi5 vdd gnd_1 b net41 not_gate
+.ends or_gate
+
+****************************
+* Library          : Wallace_tree
+* Cell             : XOR_Gate
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt xor_gate a b vdd gnd_1 op
+xi9 net66 net67 vdd gnd_1 net69 and_gate
+xi7 net56 b vdd gnd_1 net66 or_gate
+xi8 a net62 vdd gnd_1 net67 or_gate
+xi10 vdd gnd_1 net69 op not_gate
+xi5 vdd gnd_1 a net56 not_gate
+xi6 vdd gnd_1 b net62 not_gate
+.ends xor_gate
+
+****************************
+* Library          : Wallace_tree
+* Cell             : half_adder
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt half_adder a b vdd carry gnd_1 sum
+xi0 a b vdd gnd_1 sum xor_gate
+xi2 a b vdd gnd_1 carry and_gate
+.ends half_adder
+
+****************************
+* Library          : Wallace_tree
+* Cell             : full_adder
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt full_adder a b cin cout vdd gnd_1 sum
+xi1 a b vdd net17 gnd_1 net18 half_adder
+xi0 cin net18 vdd net16 gnd_1 sum half_adder
+xi2 net16 net17 vdd gnd_1 cout or_gate
+.ends full_adder
+
+****************************
+* Library          : Wallace_tree
+* Cell             : layer1_group1
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt layer1_group1 vdd a0 a1 a2 b0 b1 b2 b3 b4 b5 b6 b7 c2 c3 c4 c5 c6 c7 c8
++ c9 gnd_1 s2 s3 s4 s5 s6 s7 s8 y0 y1 y9
+xi2 vdd a2 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 net64 net71 net78 net99 net92 net85
++ net111 y9 _8*1_multiplier
+xi1 vdd a1 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 net105 net63 net70 net77 net98 net91
++ net84 net110 _8*1_multiplier
+xi0 vdd a0 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 y0 net104 net62 net69 net76 net97 net90
++ net83 _8*1_multiplier
+xi8 net97 net98 net99 c6 vdd gnd_1 s5 full_adder
+xi7 net90 net91 net92 c7 vdd gnd_1 s6 full_adder
+xi6 net83 net84 net85 c8 vdd gnd_1 s7 full_adder
+xi5 net76 net77 net78 c5 vdd gnd_1 s4 full_adder
+xi4 net69 net70 net71 c4 vdd gnd_1 s3 full_adder
+xi3 net62 net63 net64 c3 vdd gnd_1 s2 full_adder
+xi10 net110 net111 vdd c9 gnd_1 s8 half_adder
+xi9 net104 net105 vdd c2 gnd_1 y1 half_adder
+.ends layer1_group1
+
+****************************
+* Library          : Wallace_tree
+* Cell             : layer1_group3
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt layer1_group3 vdd a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 m6 m7 m8 m9 m10
++ m11 m12 m13 n7 n8 n9 n10 n11 n12 n13 n14
+xi1 vdd a7 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 n7 n8 n9 n10 n11 n12 n13 n14
++ _8*1_multiplier
+xi0 vdd a6 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 m6 m7 m8 m9 m10 m11 m12 m13
++ _8*1_multiplier
+.ends layer1_group3
+
+****************************
+* Library          : Wallace_tree
+* Cell             : layer2
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt layer2 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 c3 c4 c5 c5_
++ c6 c7 c7_ c8 c8_ c9 c9_ c10 c10_ c11_ c12_ c13_ c14_ gnd_1 n14 s3 s4 s5 s6 s6_
++  s7 s7_ s8 s8_ s9 s9_ s10 s10_ s11 s11_ s12_ s13_ y0 y1 y2 y9
+xi1 vdd a3 a4 a5 b0 b1 b2 b3 b4 b5 b6 b7 c5_ net164 net184 net191 net211 net218
++ net225 net232 gnd_1 net145 net152 net159 net172 net179 s10 s11 net131 net138
++ y9 layer1_group1
+xi0 vdd a0 a1 a2 b0 b1 b2 b3 b4 b5 b6 b7 net236 net129 net241 net240 net150
++ net246 net170 net178 gnd_1 net96 net130 net137 net144 net235 net158 net171 y0
++ y1 net177 layer1_group1
+xi2 vdd a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 gnd_1 net165 net185 net192 net212 net219
++ net226 net233 net205 net186 net193 net213 net220 net227 net234 net206 n14
++ layer1_group3
+xi19 net205 net206 vdd c14_ gnd_1 s13_ half_adder
+xi13 net164 net165 vdd c7_ gnd_1 s6_ half_adder
+xi3 net236 net96 vdd c3 gnd_1 y2 half_adder
+xi23 net232 net233 net234 c13_ vdd gnd_1 s12_ full_adder
+xi22 net225 net226 net227 c12_ vdd gnd_1 s11_ full_adder
+xi21 net218 net219 net220 c11_ vdd gnd_1 s10_ full_adder
+xi20 net211 net212 net213 c10_ vdd gnd_1 s9_ full_adder
+xi17 net191 net192 net193 c9_ vdd gnd_1 s8_ full_adder
+xi16 net184 net185 net186 c8_ vdd gnd_1 s7_ full_adder
+xi15 net177 net178 net179 c10 vdd gnd_1 s9 full_adder
+xi14 net170 net171 net172 c9 vdd gnd_1 s8 full_adder
+xi12 net246 net158 net159 c8 vdd gnd_1 s7 full_adder
+xi8 net129 net130 net131 c4 vdd gnd_1 s3 full_adder
+xi9 net241 net137 net138 c5 vdd gnd_1 s4 full_adder
+xi10 net240 net144 net145 c6 vdd gnd_1 s5 full_adder
+xi11 net150 net235 net152 c7 vdd gnd_1 s6 full_adder
+.ends layer2
+
+****************************
+* Library          : Wallace_tree
+* Cell             : layer3
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt layer3 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 c4 c5 c6 c7
++ c7_ c8 c8_ c9 c9_ c10 c10_ c11 c11_ c12 c12_ c13 c13_ c14_ gnd_1 n14 s4 s5 s6
++ s7 s8 s9 s10 s11 s12 s13 y0 y1 y2 y3
+xi0 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 net63 net69 net87 net88
++ net94 net101 c7_ net108 c8_ net122 c9_ net115 c10_ c11_ c12_ c13_ c14_ gnd_1
++ n14 net124 net68 net125 net93 net95 net100 net102 net107 net109 net121 net123
++ net114 net116 net74 net75 net81 s13 y0 y1 y2 net80 layer2
+xi4 net80 net81 vdd c13 gnd_1 s12 half_adder
+xi3 net74 net75 vdd c12 gnd_1 s11 half_adder
+xi2 net68 net69 vdd c5 gnd_1 s4 half_adder
+xi1 net124 net63 vdd c4 gnd_1 y3 half_adder
+xi10 net121 net122 net123 c10 vdd gnd_1 s9 full_adder
+xi9 net114 net115 net116 c11 vdd gnd_1 s10 full_adder
+xi8 net107 net108 net109 c9 vdd gnd_1 s8 full_adder
+xi7 net100 net101 net102 c8 vdd gnd_1 s7 full_adder
+xi6 net93 net94 net95 c7 vdd gnd_1 s6 full_adder
+xi5 net125 net87 net88 c6 vdd gnd_1 s5 full_adder
+.ends layer3
+
+****************************
+* Library          : Wallace_tree
+* Cell             : layer_4
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt layer_4 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 c5 c6 c7 c8
++ c9 c10 c11 c12 c13 c14 c15 gnd_1 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 y0 y1 y2
++ y3 y4
+xi0 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 net57 net63 net69 net75
++ net76 net82 net83 net110 net15 net89 net90 net103 net104 net129 net97 net117
++ net118 net124 gnd_1 net127 net56 net62 net68 net74 net81 net109 gnd_1 net102
++ net95 net116 y0 y1 y2 y3 layer3
+xi11 net127 net124 vdd c15 gnd_1 s14 half_adder
+xi3 net68 net69 vdd c7 gnd_1 s6 half_adder
+xi2 net62 net63 vdd c6 gnd_1 s5 half_adder
+xi1 net56 net57 vdd c5 gnd_1 y4 half_adder
+xi10 net116 net117 net118 c14 vdd gnd_1 s13 full_adder
+xi9 net109 net110 net15 c10 vdd gnd_1 s9 full_adder
+xi8 net102 net103 net104 c12 vdd gnd_1 s11 full_adder
+xi7 net95 net129 net97 c13 vdd gnd_1 s12 full_adder
+xi6 gnd_1 net89 net90 c11 vdd gnd_1 s10 full_adder
+xi5 net81 net82 net83 c9 vdd gnd_1 s8 full_adder
+xi4 net74 net75 net76 c8 vdd gnd_1 s7 full_adder
+.ends layer_4
+
+****************************
+* Library          : Wallace_tree
+* Cell             : 10_bit_ripple_carry
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+.subckt _10_bit_ripple_carry vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7
++  gnd_1 y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 y11 y12 y13 y14 y15 y16
+xi0 vdd a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 net50 net57 net64 net71
++ net78 net85 net99 net120 net108 net90 net114 gnd_1 net49 net56 net63 net70
++ net77 net84 net98 net122 net109 net91 y0 y1 y2 y3 y4 layer_4
+xi11 net114 net115 vdd y16 gnd_1 y15 half_adder
+xi1 net49 net50 vdd net55 gnd_1 y5 half_adder
+xi10 net109 net108 net107 net112 vdd gnd_1 y13 full_adder
+xi9 net122 net120 net121 net107 vdd gnd_1 y12 full_adder
+xi8 net97 net98 net99 net121 vdd gnd_1 y11 full_adder
+xi7 net90 net91 net112 net115 vdd gnd_1 y14 full_adder
+xi6 net83 net84 net85 net97 vdd gnd_1 y10 full_adder
+xi5 net76 net77 net78 net83 vdd gnd_1 y9 full_adder
+xi4 net69 net70 net71 net76 vdd gnd_1 y8 full_adder
+xi3 net62 net63 net64 net69 vdd gnd_1 y7 full_adder
+xi2 net55 net56 net57 net62 vdd gnd_1 y6 full_adder
+.ends _10_bit_ripple_carry
+
+****************************
+* Library          : Wallace_tree
+* Cell             : dc_analysis_tb
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+****************************
+xi1 net173 a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 gnd! y0 y1 y2 y3 y4
++ y5 y6 y7 y8 y9 y10 y11 y12 y13 y14 y15 y16 _10_bit_ripple_carry
+v45 net173 gnd! dc=1.05
+v17 b6 gnd! dc=1
+v16 b7 gnd! dc=0
+v15 b5 gnd! dc=0
+v48 b4 gnd! dc=0
+v13 b3 gnd! dc=1
+v12 b2 gnd! dc=0
+v11 b1 gnd! dc=0
+v10 b0 gnd! dc=1
+v37 a0 gnd! dc=1
+v38 a1 gnd! dc=1
+v40 a4 gnd! dc=1
+v42 a2 gnd! dc=0
+v43 a3 gnd! dc=1
+v4 a5 gnd! dc=0
+v47 a6 gnd! dc=0
+v2 a7 gnd! dc=1
+c34 y16 gnd! c=1p
+c33 y15 gnd! c=1p
+c32 y14 gnd! c=1p
+c31 y13 gnd! c=1p
+c30 y12 gnd! c=1p
+c29 y11 gnd! c=1p
+c28 y10 gnd! c=1p
+c27 y9 gnd! c=1p
+c26 y8 gnd! c=1p
+c25 y7 gnd! c=1p
+c24 y6 gnd! c=1p
+c23 y5 gnd! c=1p
+c22 y4 gnd! c=1p
+c21 y3 gnd! c=1p
+c20 y2 gnd! c=1p
+c19 y1 gnd! c=1p
+c18 y0 gnd! c=1p
+
+
+
+
+
+
+
+
+.dcOP
+
+.option primesim_remove_probe_prefix = 0
+.probe v() i() level=1
+.probe dc v(a0) v(a1) v(a2) v(a3) v(a4) v(a5) v(a6) v(a7) v(b0) v(b1) v(b2)
++ v(b3) v(b4) v(b5) v(b6) v(b7) v(y0) v(y1) v(y10) v(y11) v(y12) v(y13) v(y14)
++ v(y15) v(y16) v(y2) v(y3) v(y4) v(y5) v(y6) v(y7) v(y8) v(y9)
+
+.temp 25
+
+
+
+.option primesim_output=wdf
+
+
+.option parhier = LOCAL
+
+
+
+
+
+
+.end
